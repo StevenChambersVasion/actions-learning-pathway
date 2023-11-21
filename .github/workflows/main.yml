@@ -1,4 +1,4 @@
-name: hello-world
+name: hello-world-step-2
 on: push
 jobs: 
   hello-world-job:
