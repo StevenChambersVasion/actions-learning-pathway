@@ -11,6 +11,6 @@ jobs:
         # uses: declares the action and what version to run
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '17.x'
       - run: npm install
       - run: npm run build
