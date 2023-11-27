@@ -1,16 +1,27 @@
-name: hello-world-step-2
+name: Build-test-deploy-step-3
 on: push
 jobs: 
-  hello-world-job:
+  build:
     runs-on: ubuntu-latest
     steps: 
-      - name: Check out repository code
+      - name: checkout repo
         uses: actions/checkout@v3
-        #name: used for human readability
-      - name: configure and use node.js 
-        # uses: declares the action and what version to run
+      - name: use node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
       - run: npm install
       - run: npm run build
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - run: npm test
+    
